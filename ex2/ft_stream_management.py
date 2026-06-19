@@ -1,5 +1,6 @@
 import sys
 
+
 if __name__ == "__main__":
     print("=== Cyber Archives Recovery ===")
     if (len(sys.argv) == 1):
@@ -12,7 +13,7 @@ if __name__ == "__main__":
             print("---\n")
             content = file.read()
             print(content)
-            print("---")
+            print("\n---")
             file.close()
             print(f"File '{file_path}' closed.\n")
             new_content_list = [x + "#\n" for x in content.split("\n")]
@@ -23,13 +24,18 @@ if __name__ == "__main__":
             print("Transform data:")
             print("---\n")
             print(new_content)
-            print("---\n")
+            print("\n---")
             # new_file_name = input("Enter new file name (or empty): ")
             print("Enter new file name (or empty): ", end='', flush=True)
             new_file_name = sys.stdin.readline()[:-1]
             if (new_file_name):
-                with open(new_file_name, "x") as file:
-                    file.write(new_content)
+                print(f"Saving data to '{new_file_name}'")
+                file = open(new_file_name, "x")
+                file.write(new_content)
+                file.close()
+                print(f"Data saved in file '{new_file_name}'.")
+            else:
+                print("Not saving data.")
         except FileNotFoundError as e:
             print(
                 f"[STDERR] Error opening '{file_path}': {e}",

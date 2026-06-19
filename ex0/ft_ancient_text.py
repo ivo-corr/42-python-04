@@ -12,8 +12,8 @@ if __name__ == "__main__":
             print("---\n")
             content = file.read()
             print(content)
-            print("---")
             file.close()
+            print("---")
             print(f"File '{file_path}' closed.")
         except Exception as e:
             print(f"Error opening '{file_path}': {e}")
